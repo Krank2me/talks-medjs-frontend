@@ -16,64 +16,62 @@ export const TalkForm = () => {
         />
       </div>
       <form className="talk-container__form" onSubmit={handleSubmit}>
+        <label className="talk-container__form--label">Nombre completo</label>
         <input
           type="text"
           className="talk-container__form--input"
-          placeholder="Name"
-          name="Nombre completo"
-          required="true"
-        />
-        <input
-          type="text"
-          className="talk-container__form--input"
-          placeholder="Email"
           name="name"
           required="true"
         />
+        <label className="talk-container__form--label">Email</label>
         <input
           type="text"
           className="talk-container__form--input"
-          placeholder="Handle Twitter, ejm: @jhondoe"
-          name="name"
+          name="email"
           required="true"
         />
+        <label className="talk-container__form--label">Usuario Twitter</label>
         <input
           type="text"
           className="talk-container__form--input"
-          placeholder="Titulo de la charla"
-          name="name"
+          name="twitter"
+        />
+        <label className="talk-container__form--label">Título de la charla</label>
+        <input
+          type="text"
+          className="talk-container__form--input"
+          name="talk"
           required="true"
         />
+        <label className="talk-container__form--label">Descripción corta de la charla</label>
         <textarea
           rows="50"
           cols="50"
           className="talk-container__form--textarea"
-          placeholder="Descripción corta de la charla"
-          name="name"
+          name="description"
           required="true"
         />
+        <label className="talk-container__form--label">Tipo de evento</label>
         <select className="talk-container__form--input" name="" id="">
           <option value="charla">Charla</option>
           <option value="taller" disabled>Taller</option>
           <option value="ambas" disabled>Charla & taller</option>
         </select>
+        <label className="talk-container__form--label">Duración aproximada</label>
         <input
           type="text"
           className="talk-container__form--input"
-          placeholder="Duración aproximada"
-          name="name"
+          name="duration"
           required="true"
         />
+        <label className="talk-container__form--label">Breve descripción sobre usted (trayectoria, ocupación, etc)</label>
         <input
           type="text"
-          className="talk-container__form--input"
-          placeholder="Breve descripción sobre usted (trayectoria, ocupación, etc)"
-          name="name"
-          required="true"
+          className="talk-container__form--textarea"
+          name="personalInfo"
         />
         <div className="talk-container__form--btns">
           <button className="talk-container__form--btns__btn--send">Enviar</button>
-          <button className="talk-container__form--btns__btn--clean">Limpiar</button>
         </div>
       </form>
     </div>

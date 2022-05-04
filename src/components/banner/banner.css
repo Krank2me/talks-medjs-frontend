@@ -1,17 +1,18 @@
 .banner-container {
+  background-color: #209591;
   display: flex;
   justify-content: center;
+  padding: 20px 0px;
 }
 
 .banner-container__title {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
   color: #FFF;
   font-weight: bold;
-  font-size: 25px;
-  background-color: #569FDD;
+  font-size: 30px;
+  background-color: #92D160;
   height: 60px;
   width: 85%;
   border-radius: 5px;

@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
+import { addTalk } from "../../services/AddTalkService";
 import "./talkForm.css";
 
 export const TalkForm = () => {
-  const handleSubmit = (e) => {
+  const initialStateValues = {
+    fullName: '',
+    email: '',
+    userTwitter: '',
+    talkTitle: '',
+    talkDescription: '',
+    speakerDescription: '',
+  };
+  const [values, setValues] = useState(initialStateValues);
+
+  const handleInputChange = (e) => {
+    const {name, value} = e.target;
+    setValues({...values, [name]: value});
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('values: ', values);
+    const response =  await addTalk(values);
+    console.log("🚀 ~ file: TalkForm.js ~ line 24 ~ handleSubmit ~ response", response);
+    setValues({...initialStateValues});
   };
 
   return (
@@ -20,58 +40,61 @@ export const TalkForm = () => {
         <input
           type="text"
           className="talk-container__form--input"
-          name="name"
-          required="true"
+          name="fullName"
+          onChange={handleInputChange}
+          value={values.fullName}
         />
         <label className="talk-container__form--label">Email</label>
         <input
           type="text"
           className="talk-container__form--input"
           name="email"
-          required="true"
+          onChange={handleInputChange}
+          value={values.email}
         />
         <label className="talk-container__form--label">Usuario Twitter</label>
         <input
           type="text"
           className="talk-container__form--input"
-          name="twitter"
+          name="userTwitter"
+          onChange={handleInputChange}
+          value={values.userTwitter}
         />
-        <label className="talk-container__form--label">Título de la charla</label>
+        <label className="talk-container__form--label">
+          Título de la charla
+        </label>
         <input
           type="text"
           className="talk-container__form--input"
-          name="talk"
-          required="true"
+          name="talkTitle"
+          onChange={handleInputChange}
+          value={values.talkTitle}
         />
-        <label className="talk-container__form--label">Descripción corta de la charla</label>
+        <label className="talk-container__form--label">
+          Descripción corta de la charla
+        </label>
         <textarea
           rows="50"
           cols="50"
           className="talk-container__form--textarea"
-          name="description"
-          required="true"
+          name="talkDescription"
+          onChange={handleInputChange}
+          value={values.talkDescription}
         />
-        <label className="talk-container__form--label">Tipo de evento</label>
-        <select className="talk-container__form--input" name="" id="">
-          <option value="charla">Charla</option>
-          <option value="taller" disabled>Taller</option>
-          <option value="ambas" disabled>Charla & taller</option>
-        </select>
-        <label className="talk-container__form--label">Duración aproximada</label>
-        <input
-          type="text"
-          className="talk-container__form--input"
-          name="duration"
-          required="true"
-        />
-        <label className="talk-container__form--label">Breve descripción sobre usted (trayectoria, ocupación, etc)</label>
+        <label className="talk-container__form--label">
+          Breve descripción sobre usted (trayectoria, ocupación, etc)
+        </label>
         <input
           type="text"
           className="talk-container__form--textarea"
-          name="personalInfo"
+          name="speakerDescription"
+          onChange={handleInputChange}
+          value={values.speakerDescription}
         />
         <div className="talk-container__form--btns">
-          <button className="talk-container__form--btns__btn--send">Enviar</button>
+          <button className="talk-container__form--btns__btn--send">
+            Enviar
+          </button>
         </div>
       </form>
     </div>
